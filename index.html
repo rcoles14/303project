@@ -25,8 +25,34 @@
     />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <!-- sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- JS Script -->
+    <script src="./js/scripts.js" defer></script>
   </head>
-  <body>
+  <body class="body" onload="showMain()">
+    <!-- Modal -->
+    <div class="modal_bg" onclick="closeModal()"></div>
+    <div class="modal">
+      <div class="app_container">
+        <div class="app_header">
+          <p class="app_title"></p>
+        </div>
+        <div>
+          <p class="app_date"></p>
+          <p class="app_time"></p>
+          <p class="byuID"></p>
+          <p class="app_doctor"></p>
+          <p class="app_department"></p>
+          <p class="symptom"></p>
+        </div>
+
+        <div class="btnBox">
+          <button onclick="updateApp()">UPDATE</button>
+          <button class="closeBtn" onclick="closeModal()">CANCEL</button>
+        </div>
+      </div>
+    </div>
     <!-- Navigation-->
     <nav class="navbar navbar-dark bg-blue static-top">
       <div class="container">
@@ -74,10 +100,10 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="bi bi-calendar-date m-auto text-icon"></i>
+                <i class="bi bi-calendar-date m-auto text-icon" id="calendar" onclick="popModal()"></i>
               </div>
-              <h3>Easy</h3>
-              <p class="lead mb-0">Easy to use list of available doctors</p>
+              <h3 class="calendar_title">Appointment</h3>
+              <p class="lead mb-0" id="calendar_description">See your appointment detail</p>
             </div>
           </div>
           <div class="col-lg-4">
