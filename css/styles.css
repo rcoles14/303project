@@ -11745,3 +11745,88 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+/* Henry CSS */
+
+/* modal */
+.modal_bg {
+  position: absolute;
+  width: 100%;
+  top: 66px;
+  background-color: black;
+  opacity: 0.6;
+  z-index: 2;
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  transform: translate(48%, -30%);
+  top: 45%;
+  width: 50vw;
+  height: 40%;
+  background: white;
+  opacity: 1;
+  z-index: 3;
+  border-radius: 10px;
+  box-shadow: 0 1rem 2.5rem rgb(27, 64, 94);
+  padding: 40px 10px;
+  display: none;
+}
+
+.app_container {
+  width: 60%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app_header {
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.btnBox {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  right: 20px;
+}
+
+.btnBox button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  background: rgb(93, 201, 21);
+  color: white;
+}
+
+.btnBox button:hover {
+  transform: scale(1.1);
+  background: rgb(48, 109, 8);
+  transition: all 200ms ease-in-out;
+}
+
+.closeBtn {
+  margin-left: 13px;
+  background: rgb(253, 42, 42) !important;
+}
+
+.closeBtn:hover {
+  background: rgb(179, 4, 4) !important;
+}
+
+/* features-icons Clickable */
+
+.features-icons-icon i {
+  cursor: pointer;
+}
+
+.features-icons-icon i:hover {
+  transform: scale(1.2);
+  transition: all 200ms ease-in-out;
+}
