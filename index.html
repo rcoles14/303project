@@ -27,12 +27,13 @@
     <link href="css/styles.css" rel="stylesheet" />
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <!-- JS Script -->
     <script src="./js/scripts.js" defer></script>
   </head>
   <body class="body" onload="showMain()">
     <!-- Modal -->
-    <div class="modal_bg" onclick="closeModal()"></div>
+    <div class="modal_bg" onclick="cancelModal()"></div>
     <div class="modal">
       <div class="app_container">
         <div class="app_header">
@@ -49,7 +50,7 @@
 
         <div class="btnBox">
           <button onclick="updateApp()">UPDATE</button>
-          <button class="closeBtn" onclick="closeModal()">CANCEL</button>
+          <button class="closeBtn" onclick="cancelModal()">CANCEL</button>
         </div>
       </div>
     </div>
