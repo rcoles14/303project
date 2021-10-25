@@ -11838,3 +11838,8 @@ footer.footer {
   transform: scale(1.2);
   transition: all 200ms ease-in-out;
 }
+
+/* swal */
+.swal2-cancel.btn.btn-danger {
+  margin-right: 10px;
+}

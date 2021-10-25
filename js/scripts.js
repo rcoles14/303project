@@ -7,6 +7,12 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
+// This checks if a user has an appoinment 
+// if so, show that he/she has an appointment
+// otherwise, change the calendar icon's color more lightly & replace the text with "You have no appointment"
+// This variable will be assigned a boolean value after checking this user's info in our database
+let haveAppointment = true;
+
 // modal
 
 const closeModal = () => {
@@ -46,15 +52,12 @@ const cancelModal = () => {
             'Your appointment has been canceled.',
             'success'
         )}
+        haveAppointment = false;
+        showMain();
+
     })
     closeModal();
 }
-
-// This checks if a user has an appoinment 
-// if so, show that he/she has an appointment
-// otherwise, change the calendar icon's color more lightly & replace the text with "You have no appointment"
-// This variable will be assigned a boolean value after checking this user's info in our database
-let haveAppointment = true;
 
 // First, we need to get the current user's info from database
 let appointment_info = {
@@ -164,6 +167,7 @@ const updateApp = () => {
 }
 
 const showMain = () => {
+    console.log(haveAppointment);
     const calendarIcon = document.querySelector("#calendar");
     const calendarTitle = document.querySelector(".calendar_title");
     const calendarDescription = document.querySelector("#calendar_description");
