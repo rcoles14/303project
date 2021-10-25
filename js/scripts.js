@@ -176,7 +176,9 @@ const showMain = () => {
         calendarIcon.style.pointerEvents = 'none';
         calendarTitle.innerHTML = "Appointment";
         calendarDescription.innerHTML = "No appointment made"
+        calendarIcon.classList.remove("bounce");
         return;
-    } 
+    }
+    calendarIcon.classList.add("bounce");
 }
 
