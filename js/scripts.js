@@ -71,30 +71,75 @@ let appointment_info = {
     "symptom": "coughing"
 }
 
-function popModal(e) {
+function popModal(type) {
     const modal_bg = document.querySelector(".modal_bg");
     const modal = document.querySelector(".modal");
+
+    if (type === "appointment") {
+        modal.innerHTML = `
+        <div class="app_header">
+            <p class="app_title"></p>
+        </div>
+        <div class="app_container">
+            <div>
+            <p class="app_date"></p>
+            <p class="app_time"></p>
+            <p class="byuID"></p>
+            <p class="app_doctor"></p>
+            <p class="app_department"></p>
+            <p class="symptom"></p>
+            </div>
+
+            <div class="btnBox">
+            <button class = "updateBtn" onclick="updateApp()">UPDATE</button>
+            <button class="cancelBtn" onclick="cancelModal()">CANCEL</button>
+            </div>
+        </div>`;
+
+        const app_title = document.querySelector(".app_title");
+        const app_date = document.querySelector(".app_date");
+        const app_time = document.querySelector(".app_time");
+        const byu_id = document.querySelector(".byuID");
+        const app_doctor = document.querySelector(".app_doctor");
+        const app_location = document.querySelector(".app_department");
+        const symptom = document.querySelector(".symptom")
+    
+        app_title.innerHTML = `${appointment_info.user_name}'s Appointment`;
+        app_date.innerHTML = `Appointment Date: <b>${appointment_info.date}</b>`;
+        app_time.innerHTML = `Appointment Time: <b>${appointment_info.time}</b>`;
+        byu_id.innerHTML = `Your BYU ID: <b>${appointment_info.BYU_ID}</b>`;
+        app_doctor.innerHTML = `Name of Doctor: <b>Dr. ${appointment_info.doctor}</b>`;
+        app_location.innerHTML = `Department: <b>${appointment_info.department}</b>`;
+        symptom.innerHTML = `Symptom you have: <b>${appointment_info.symptom}</b>`;
+    }
+    else {
+        modal.innerHTML = `
+        <div class="app_header">
+            <p class="app_title"></p>
+        </div>
+        <div class="app_container">
+            <div>
+            <p>Available Time</p>
+            <p class="byuID"></p>
+            <p class="app_doctor"></p>
+            <p class="app_department"></p>
+            <p class="symptom"></p>
+            </div>
+
+            <div class="btnBox">
+            <button class = "updateBtn" onclick="updateApp()">UPDATE</button>
+            <button class="cancelBtn" onclick="cancelModal()">CANCEL</button>
+            </div>
+        </div>`
+        const app_title = document.querySelector(".app_title");
+        app_title.innerHTML = `${appointment_info.user_name}'s COVID Vaccination`;
+    }
+
     const nav = document.querySelector(".navbar");
     const navHeight = nav.getBoundingClientRect().height;
     const body = document.querySelector(".body");
     const bodyHeight = body.getBoundingClientRect().height;
     const restHeight = bodyHeight - navHeight;
-
-    const app_title = document.querySelector(".app_title");
-    const app_date = document.querySelector(".app_date");
-    const app_time = document.querySelector(".app_time");
-    const byu_id = document.querySelector(".byuID");
-    const app_doctor = document.querySelector(".app_doctor");
-    const app_location = document.querySelector(".app_department");
-    const symptom = document.querySelector(".symptom")
-
-    app_title.innerHTML = `${appointment_info.user_name}'s Appointment`;
-    app_date.innerHTML = `Appointment Date: <b>${appointment_info.date}</b>`;
-    app_time.innerHTML = `Appointment Time: <b>${appointment_info.time}</b>`;
-    byu_id.innerHTML = `Your BYU ID: <b>${appointment_info.BYU_ID}</b>`;
-    app_doctor.innerHTML = `Name of Doctor: <b>Dr. ${appointment_info.doctor}</b>`;
-    app_location.innerHTML = `Department: <b>${appointment_info.department}</b>`;
-    symptom.innerHTML = `Symptom you have: <b>${appointment_info.symptom}</b>`;
 
     modal_bg.style.height = `${restHeight}px`;
     modal_bg.style.display="block";
