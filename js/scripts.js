@@ -46,16 +46,6 @@ const cancelModal = () => {
             'Your appointment has been canceled.',
             'success'
         )}
-        // else if (
-        //   /* Read more about handling dismissals below */
-        //     result.dismiss === Swal.DismissReason.cancel
-        // ) {
-        // swalWithBootstrapButtons.fire(
-        //     'Cancelled',
-        //     'Your imaginary file is safe :)',
-        //     'error'
-        //     )
-        // }
     })
     closeModal();
 }
@@ -149,8 +139,11 @@ const updateApp = () => {
     const btnBox = document.querySelector(".btnBox");
     const cancelBtn = document.querySelector(".cancelBtn");
 
+    // today
+    const today = new Date().toISOString().split('T')[0];
+
     app_title.innerHTML = `${appointment_info.user_name}'s Update`;
-    app_date.innerHTML = `Appointment Date: <input type="date" placeholder=${appointment_info.date} id='input_date'>`;
+    app_date.innerHTML = `Appointment Date: <input type="date" placeholder=${appointment_info.date} id='input_date' min='${today}'>`;
     app_time.innerHTML = `Appointment Time: <input type="text" placeholder=${appointment_info.time} id='input_time'>`
     symptom.innerHTML = `Symptom you have: <input type="text" placeholder=${appointment_info.symptom} id='input_symptom'>`;
 
