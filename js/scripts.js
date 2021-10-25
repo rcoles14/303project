@@ -54,6 +54,7 @@ const cancelModal = () => {
         )}
         haveAppointment = false;
         showMain();
+
     })
     closeModal();
 }
