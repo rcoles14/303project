@@ -51,10 +51,11 @@ const cancelModal = () => {
             'Canceled!',
             'Your appointment has been canceled.',
             'success'
-        )}
-        haveAppointment = false;
-        showMain();
-
+            
+        )
+            haveAppointment = false;
+            showMain();
+        }
     })
     closeModal();
 }
