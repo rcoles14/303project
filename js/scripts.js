@@ -7,6 +7,12 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
+// This checks if a user has an appoinment 
+// if so, show that he/she has an appointment
+// otherwise, change the calendar icon's color more lightly & replace the text with "You have no appointment"
+// This variable will be assigned a boolean value after checking this user's info in our database
+let haveAppointment = true;
+
 // modal
 
 const closeModal = () => {
@@ -46,25 +52,11 @@ const cancelModal = () => {
             'Your appointment has been canceled.',
             'success'
         )}
-        // else if (
-        //   /* Read more about handling dismissals below */
-        //     result.dismiss === Swal.DismissReason.cancel
-        // ) {
-        // swalWithBootstrapButtons.fire(
-        //     'Cancelled',
-        //     'Your imaginary file is safe :)',
-        //     'error'
-        //     )
-        // }
+        haveAppointment = false;
+        showMain();
     })
     closeModal();
 }
-
-// This checks if a user has an appoinment 
-// if so, show that he/she has an appointment
-// otherwise, change the calendar icon's color more lightly & replace the text with "You have no appointment"
-// This variable will be assigned a boolean value after checking this user's info in our database
-let haveAppointment = true;
 
 // First, we need to get the current user's info from database
 let appointment_info = {
@@ -149,8 +141,11 @@ const updateApp = () => {
     const btnBox = document.querySelector(".btnBox");
     const cancelBtn = document.querySelector(".cancelBtn");
 
+    // today
+    const today = new Date().toISOString().split('T')[0];
+
     app_title.innerHTML = `${appointment_info.user_name}'s Update`;
-    app_date.innerHTML = `Appointment Date: <input type="date" placeholder=${appointment_info.date} id='input_date'>`;
+    app_date.innerHTML = `Appointment Date: <input type="date" placeholder=${appointment_info.date} id='input_date' min='${today}'>`;
     app_time.innerHTML = `Appointment Time: <input type="text" placeholder=${appointment_info.time} id='input_time'>`
     symptom.innerHTML = `Symptom you have: <input type="text" placeholder=${appointment_info.symptom} id='input_symptom'>`;
 
@@ -171,6 +166,7 @@ const updateApp = () => {
 }
 
 const showMain = () => {
+    console.log(haveAppointment);
     const calendarIcon = document.querySelector("#calendar");
     const calendarTitle = document.querySelector(".calendar_title");
     const calendarDescription = document.querySelector("#calendar_description");
