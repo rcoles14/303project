@@ -11764,7 +11764,7 @@ footer.footer {
   transform: translate(48%, -30%);
   top: 45%;
   width: 50vw;
-  height: 40%;
+  height: 60vh;
   background: white;
   opacity: 1;
   z-index: 3;
@@ -11820,6 +11820,14 @@ footer.footer {
   background: rgb(179, 4, 4) !important;
 }
 
+.cancelBtn {
+  margin-left: 13px;
+  background: rgb(253, 42, 42) !important;
+}
+
+.cancelBtn:hover {
+  background: rgb(179, 4, 4) !important;
+}
 /* features-icons Clickable */
 
 .features-icons-icon i {

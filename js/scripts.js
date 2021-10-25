@@ -10,13 +10,15 @@
 // modal
 
 const closeModal = () => {
-    console.log("DJDJDJD")
+    const btnBox = document.querySelector(".btnBox");
     const modal_bg = document.querySelector(".modal_bg");
-    console.log(modal_bg);
     const modal = document.querySelector(".modal");
 
     modal_bg.style.display="none";
     modal.style.display = "none";
+
+    btnBox.innerHTML = `<button class = "updateBtn" onclick="updateApp()">UPDATE</button>
+    <button class="cancelBtn" onclick="cancelModal()">CANCEL</button>`
 }
 
 // cancel appointment
@@ -34,7 +36,7 @@ const cancelModal = () => {
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, Cancel It!',
+        confirmButtonText: 'Cancel It!',
         cancelButtonText: 'Never Mind!',
         reverseButtons: true
     }).then((result) => {
@@ -105,16 +107,67 @@ function popModal(e) {
     modal.style.display = "block";
 }
 
+const updateAppointment = () => {
+
+    appointment_info.date = document.getElementById("input_date").value;
+    appointment_info.time = document.getElementById("input_time").value;
+    appointment_info.symptom = document.getElementById("input_symptom").value;
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+        title: 'Before confirmation',
+        text: "Is every information correct?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Hold on',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+            'Updated!',
+            'Your appointment has been updated.',
+            'success'
+        )}
+    })
+    closeModal();
+}
+
 const updateApp = () => {
     const app_title = document.querySelector(".app_title");
     const app_date = document.querySelector(".app_date");
     const app_time = document.querySelector(".app_time");
-    const symptom = document.querySelector(".symptom")
+    const symptom = document.querySelector(".symptom");
+    const updateBtn = document.querySelector(".updateBtn");
+    const btnBox = document.querySelector(".btnBox");
+    const cancelBtn = document.querySelector(".cancelBtn");
 
     app_title.innerHTML = `${appointment_info.user_name}'s Update`;
-    app_date.innerHTML = `Appointment Date: <input type="date" placeholder=${appointment_info.date}>`;
-    app_time.innerHTML = `Appointment Time: <input type="text" placeholder=${appointment_info.time}>`
-    symptom.innerHTML = `Symptom you have: <input type="text" placeholder=${appointment_info.symptom}>`;
+    app_date.innerHTML = `Appointment Date: <input type="date" placeholder=${appointment_info.date} id='input_date'>`;
+    app_time.innerHTML = `Appointment Time: <input type="text" placeholder=${appointment_info.time} id='input_time'>`
+    symptom.innerHTML = `Symptom you have: <input type="text" placeholder=${appointment_info.symptom} id='input_symptom'>`;
+
+    let newNode = document.createElement("button");
+    let newNode2 = document.createElement("button"); 
+
+    newNode.onclick = updateAppointment;
+    newNode2.onclick = closeModal;
+
+    newNode.classList.add("confirm");
+    newNode.innerHTML = "CONFIRM";
+    cancelBtn.style.display = "none";
+    updateBtn.style.display = 'none';
+    btnBox.appendChild(newNode);
+    newNode2.classList.add("closeBtn");
+    newNode2.innerHTML = "CLOSE";
+    btnBox.appendChild(newNode2);
 }
 
 const showMain = () => {
