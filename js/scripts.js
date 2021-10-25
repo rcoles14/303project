@@ -102,6 +102,10 @@ function popModal(e) {
 
 const updateAppointment = () => {
 
+    let date = appointment_info.date;
+    let time = appointment_info.time;
+    let symptom = appointment_info.symptom;
+
     appointment_info.date = document.getElementById("input_date").value;
     appointment_info.time = document.getElementById("input_time").value;
     appointment_info.symptom = document.getElementById("input_symptom").value;
@@ -129,6 +133,11 @@ const updateAppointment = () => {
             'Your appointment has been updated.',
             'success'
         )}
+        else {
+            appointment_info.date = date;
+            appointment_info.time = time;
+            appointment_info.symptom = symptom;
+        }
     })
     closeModal();
 }
